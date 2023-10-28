@@ -5,13 +5,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.RegisterPage;
-import user.*;
+import pages.*;
+import user.Credentials;
+import user.User;
+import user.UserClient;
+import user.UserGenerator;
 
-public class RegistrationTest {
+public class LoginTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
     private final UserClient client = new UserClient();
@@ -19,13 +19,16 @@ public class RegistrationTest {
     public String accessToken;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         user = UserGenerator.genericUserRandom();
+        client.createUser(user);
 
         var creds = Credentials.from(user);
         ValidatableResponse loginResponse = client.loginUser(creds);
         accessToken = loginResponse.extract().path("accessToken");
     }
+
+
     @After
     public void tearDown() {
         if (accessToken != null) {
@@ -34,47 +37,48 @@ public class RegistrationTest {
     }
 
     @Test
-    @DisplayName("")
-    public void registrationUserWithCorrectTest() {
+    public  void loginInAccountUpLogTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnUpLoginButton();
-        RegisterPage registerPage = loginPage.clickOnRegaButton();
-        registerPage.inputName(user.getName())
-                .inputEmail(user.getEmail())
-                .inputPass(user.getPassword());
-        loginPage = registerPage.clickOnRegisterButton();
-        loginPage.checkIsLoginPage();
-    }
-    @org.junit.Test
-    @DisplayName("Registration user with existen data")
-    public void registrationExistUserTest() {
-        client.createUser(user);
-
-        MainPage mainPage = new MainPage(driverRule.getDriver());
-        mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
-        RegisterPage registerPage = loginPage.clickOnRegaButton();
-        registerPage.inputName(user.getName())
-                .inputEmail(user.getEmail())
+        loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
-                .clickOnRegisterButton();
-       registerPage.showErrorExistUserMsg();
+                .clickOnButtonEnter()
+                .checkLoggedSuccess();
+    }
+    @Test
+    public  void loginInAccountPersAccTest(){
+        MainPage mainPage = new MainPage(driverRule.getDriver());
+        mainPage.openPage();
+        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        loginPage.inputEmail(user.getEmail())
+                .inputPass(user.getPassword())
+                .clickOnButtonEnter()
+                .checkLoggedSuccess();
     }
 
     @Test
-    @DisplayName("")
-    public void registrationWithInccorectPassTest() {
-        user.setPassword("000");
-
+    public  void loginInAccountFromRegaTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnUpLoginButton();
         RegisterPage registerPage = loginPage.clickOnRegaButton();
-        registerPage.inputName(user.getName())
-                .inputEmail(user.getEmail())
+        loginPage = registerPage.clickOnEnterButton();
+        loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
-                .clickOnRegisterButton();
-        registerPage.showErrorLenghtPath();
+                .clickOnButtonEnter()
+                .checkLoggedSuccess();
+    }
+    @Test
+    public  void loginInAccountFromRecoveryPassTest(){
+        MainPage mainPage = new MainPage(driverRule.getDriver());
+        mainPage.openPage();
+        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        ForgotPage forgotPage = loginPage.clickOnRecovPass();
+        loginPage = forgotPage.clickOnEnterButton();
+        loginPage.inputEmail(user.getEmail())
+                .inputPass(user.getPassword())
+                .clickOnButtonEnter()
+                .checkLoggedSuccess();
     }
 }

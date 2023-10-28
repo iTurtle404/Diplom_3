@@ -1,5 +1,6 @@
 package constants;
 
 public class Message {
-    public static final String EXIST_USER = "User already exists";
+    public static final String ERROR_LOGGED = "Logged is failed";
+    public static final String ERROR_REGIST =  "Registration is fail";
 }

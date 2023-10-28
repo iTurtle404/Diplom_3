@@ -48,12 +48,12 @@ public class DriverRule extends ExternalResource {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(DEF_TIMEOUT));
         }
 
-/*
+
     @Override
     protected void after(){
         driver.quit();
     }
-*/
+
     public WebDriver getDriver() {
         return driver;
     }

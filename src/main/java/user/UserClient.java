@@ -5,15 +5,17 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import Client.Client;
 
+
 import static constants.URLEndPoints.*;
 
 public class UserClient extends Client {
     @Step("Created new User from random")
-    public Response createUser(User user) {
+    public ValidatableResponse createUser(User user) {
         return spec()
                 .body(user)
                 .when()
-                .post(USER_REGISTER_PATH);
+                .post(USER_REGISTER_PATH)
+                .then().log().all();
     }
     @Step("Logged User")
     public ValidatableResponse loginUser(Credentials cred) {
@@ -42,4 +44,6 @@ public class UserClient extends Client {
                 .path("accessToken");
         return token.substring(7);
     }
+
+
 }

@@ -19,6 +19,7 @@ public class RegisterPage {
     protected static final By errorMsgExistUser = By.xpath(".//*[@class='input__error text_type_main-default']");
 
     protected static final By errorMsgLenghtPass = By.xpath(".//p[contains(text(),'Некорректный пароль')]");
+    protected static final By buttonAlreadyReg = By.xpath("//a[text()='Войти']");
 
 
     //methods
@@ -45,9 +46,12 @@ public class RegisterPage {
         return new LoginPage(driver);
     }
 
-
     public RegisterPage showErrorLenghtPath() {
         assertTrue( driver.findElements(errorMsgLenghtPass).size() != 0);
         return this;
+    }
+    public LoginPage clickOnEnterButton() {
+        driver.findElement(buttonAlreadyReg).click();
+        return new LoginPage(driver);
     }
 }
