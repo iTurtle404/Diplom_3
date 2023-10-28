@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import pages.*;
-import user.Credentials;
 import user.User;
 import user.UserClient;
 import user.UserGenerator;
@@ -23,9 +22,8 @@ public class LoginTest {
         user = UserGenerator.genericUserRandom();
         client.createUser(user);
 
-        var creds = Credentials.from(user);
-        ValidatableResponse loginResponse = client.loginUser(creds);
-        accessToken = loginResponse.extract().path("accessToken");
+        ValidatableResponse createResponse = client.createUser(user);
+        accessToken = createResponse.extract().path("accessToken");
     }
 
 
@@ -37,7 +35,7 @@ public class LoginTest {
     }
 
     @Test
-    public  void loginInAccountUpLogTest(){
+    public  void loginFromMainButtonTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnUpLoginButton();
@@ -47,7 +45,7 @@ public class LoginTest {
                 .checkLoggedSuccess();
     }
     @Test
-    public  void loginInAccountPersAccTest(){
+    public  void loginFromPersonalAccountTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnUpLoginButton();
@@ -58,7 +56,7 @@ public class LoginTest {
     }
 
     @Test
-    public  void loginInAccountFromRegaTest(){
+    public  void loginInAccountFromRegistrationTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnUpLoginButton();

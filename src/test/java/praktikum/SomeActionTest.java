@@ -20,7 +20,7 @@ public class SomeActionTest {
     public String accessToken;
 
     @Before
-    public void userAction() {
+    public void setUp() {
         user = UserGenerator.genericUserRandom();
 
         ValidatableResponse createResponse = client.createUser(user);
@@ -36,7 +36,7 @@ public class SomeActionTest {
     }
 
     @Test
-    public void enterInPersAccTest(){
+    public void goToPersonalAccountTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
 
         mainPage.openPage();
@@ -64,7 +64,7 @@ public class SomeActionTest {
     }
 
     @Test
-    public void exitFromPersAcc(){
+    public void logOutTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
 
         mainPage.openPage();

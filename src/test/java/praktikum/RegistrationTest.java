@@ -46,7 +46,7 @@ public class RegistrationTest {
         loginPage = registerPage.clickOnRegisterButton();
         loginPage.checkIsLoginPage();
     }
-    @org.junit.Test
+    @Test
     @DisplayName("Registration user with existen data")
     public void registrationExistUserTest() {
         client.createUser(user);
