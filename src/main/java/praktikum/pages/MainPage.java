@@ -1,11 +1,12 @@
 package praktikum.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;
-import static praktikum.pages.TestData.BASE_URL;
+import static praktikum.EnvConfig.BASE_URL;
 
 public class MainPage {
     final WebDriver driver;
@@ -17,8 +18,10 @@ public class MainPage {
         driver.get(BASE_URL);
         return this;
     }
+    public static final String ARG_FOR_SCROLL = "arguments[0].scrollIntoView();";
+
     //locators
-    protected static final By buttonEnter = By.xpath("//button[text()='Войти в аккаунт']");
+    protected static final By buttonLogIn = By.xpath("//button[text()='Войти в аккаунт']");
     protected static final By buttonPersAcc = By.xpath("//p[text()='Личный Кабинет']");
     protected static final By constructorInfo = By.xpath("//h1[text()='Соберите бургер']");
     protected static final By buttonSauce = By.xpath("//span[text()='Соусы']");
@@ -32,53 +35,69 @@ public class MainPage {
     protected static final By Filing = By.xpath("//h2[text()='Соусы']");
 
     //methods
-    public LoginPage clickOnUpLoginButton() {
-        driver.findElement(buttonEnter).click();
+    @Step("Click on Login button")
+    public LoginPage clickOnLoginButton() {
+        driver.findElement(buttonLogIn).click();
         return new LoginPage(driver);
     }
-    public ProfilePage clickOnPersAccButton() {
+    @Step("Click on Personal Accountbutton")
+    public LoginPage  clickOnPersAccButtonForLogin() {
         driver.findElement(buttonPersAcc).click();
-        return new ProfilePage(driver);
+        return new LoginPage (driver);
     }
+    @Step("Click on Personal Accountbutton")
+    public ProfilePage  clickOnPersAccButton() {
+        driver.findElement(buttonPersAcc).click();
+        return new ProfilePage (driver);
+    }
+    @Step("Check that is Main Page")
     public MainPage checkIsMainPage() {
         assertTrue(driver.findElements(constructorInfo).size() != 0);
         return this;
     }
+    @Step("Click on Sauce section")
     public MainPage clickOnSauceButton() {
         driver.findElement(buttonSauce).click();
         return this;
     }
+    @Step("Check that Sauce is visible")
     public MainPage checkIsGoToSauce() {
         assertTrue(driver.findElements(spicySauce).size() != 0);
         return this;
     }
+    @Step("Click on Filling section")
     public MainPage clickOnFillingButton() {
         driver.findElement(buttonFilling).click();
         return this;
     }
+    @Step("Check that Filling is visible")
     public MainPage checkIsGoToFilling() {
         assertTrue(driver.findElements(beefMeteorStake).size() != 0);
         return this;
     }
+    @Step("Click on Bun section")
     public MainPage clickOnBunButton() {
         driver.findElement(buttonBun).click();
         return this;
     }
+    @Step("Check that Bun is visible")
     public MainPage checkIsGoToBun() {
         assertTrue(driver.findElements(fluorBun).size() != 0);
         return this;
     }
-    public static final String ARG_FOR_SCROLL = "arguments[0].scrollIntoView();";
-
+    @Step("Scroll down to Sauce")
     public Object ScrollDownToSauce() {
         return ((JavascriptExecutor) driver).executeScript(String.valueOf(ARG_FOR_SCROLL), driver.findElement(Sauce));
     }
+    @Step("Scroll down to Filling")
     public Object ScrollDownToFilling() {
         return ((JavascriptExecutor) driver).executeScript(String.valueOf(ARG_FOR_SCROLL), driver.findElement(Filing));
     }
+    @Step("Scroll Up to Sauce")
     public Object ScrollUpToSauce() {
         return ((JavascriptExecutor) driver).executeScript(String.valueOf(ARG_FOR_SCROLL), driver.findElement(Sauce));
     }
+    @Step("Scroll Up to Bun")
     public Object ScrollUpToBun() {
         return ((JavascriptExecutor) driver).executeScript(String.valueOf(ARG_FOR_SCROLL), driver.findElement(Bun));
     }

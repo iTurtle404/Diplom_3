@@ -1,10 +1,12 @@
 package praktikum;
 
+import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import praktikum.pages.LoginPage;
 import praktikum.pages.MainPage;
 import praktikum.pages.ProfilePage;
@@ -36,11 +38,13 @@ public class SomeActionTest {
     }
 
     @Test
+    @DisplayName("Transit to Personal Account from Main Page. Logged user")
+    @Description("Possible transit to Personal Account from Main Page. Logged user")
     public void goToPersonalAccountTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
 
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter();
@@ -49,11 +53,13 @@ public class SomeActionTest {
         profilePage.checkIntoAccountSuccess();
     }
     @Test
+    @DisplayName("Transit to Constructor from Profile Page. Logged user")
+    @Description("Possible transit to Constructor from Profile Page. Logged user")
     public void goToConstructorTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
 
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter();
@@ -64,11 +70,13 @@ public class SomeActionTest {
     }
 
     @Test
+    @DisplayName("Logout user from Profile Page")
+    @Description("Possible logout user Profile Page")
     public void logOutTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
 
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter();

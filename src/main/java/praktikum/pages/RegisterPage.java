@@ -17,14 +17,12 @@ public class RegisterPage {
     protected static final By inputPass = By.xpath ("//fieldset[3]//input");
     protected static final By buttonRegister = By.xpath("//button[text()='Зарегистрироваться']");
     protected static final By errorMsgExistUser = By.xpath(".//*[@class='input__error text_type_main-default']");
-
     protected static final By errorMsgLenghtPass = By.xpath(".//p[contains(text(),'Некорректный пароль')]");
     protected static final By buttonAlreadyReg = By.xpath("//a[text()='Войти']");
 
 
     //methods
     public RegisterPage inputName(String name){
-
         driver.findElement(inputName).sendKeys(name);
         return this;
     }

@@ -1,5 +1,6 @@
 package praktikum;
 
+import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +19,7 @@ import praktikum.user.UserGenerator;
 public class RegistrationTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
-    private final UserClient client = new UserClient();
+    private UserClient client = new UserClient();;
     private User user;
     public String accessToken;
 
@@ -38,11 +39,12 @@ public class RegistrationTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("Registration user with Correct data")
+    @Description("Possible registration user with Correct data")
     public void registrationUserWithCorrectTest() {
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         RegisterPage registerPage = loginPage.clickOnRegaButton();
         registerPage.inputName(user.getName())
                 .inputEmail(user.getEmail())
@@ -52,12 +54,13 @@ public class RegistrationTest {
     }
     @Test
     @DisplayName("Registration user with existen data")
+    @Description("Impossible registration user with existen data")
     public void registrationExistUserTest() {
         client.createUser(user);
 
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         RegisterPage registerPage = loginPage.clickOnRegaButton();
         registerPage.inputName(user.getName())
                 .inputEmail(user.getEmail())
@@ -67,13 +70,14 @@ public class RegistrationTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("Registration user with incorrect password")
+    @Description("Impossible registration user with incorrect password")
     public void registrationWithInccorectPassTest() {
         user.setPassword("000");
 
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         RegisterPage registerPage = loginPage.clickOnRegaButton();
         registerPage.inputName(user.getName())
                 .inputEmail(user.getEmail())

@@ -8,8 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.time.Duration;
-
-import static praktikum.pages.TestData.DEF_TIMEOUT;
+import static praktikum.EnvConfig.*;
 
 public class DriverRule extends ExternalResource {
     WebDriver driver;
@@ -26,26 +25,28 @@ public class DriverRule extends ExternalResource {
     private  void setUpChrome() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeDriverService service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File("/Applications/chromedriver"))
+                .withLogOutput(System.out)
+                .usingDriverExecutable(new File(CHROMEDRIVER))
                 .build();
 
         ChromeOptions options = new ChromeOptions()
-                .setBinary("/Applications/chrome.app/Contents/MacOS/Google Chrome for Testing");
+                .setBinary(CHROME_BIN);
 
         driver = new ChromeDriver(service, options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(DEF_TIMEOUT));
     }
 
-        private void setUpYandex() {
-            System.setProperty("webdriver.http.factory", "jdk-http-client");
-            ChromeDriverService service = new ChromeDriverService.Builder()
-                    .usingDriverExecutable(new File("/Applications/chromedriver"))
-                    .build();
-            ChromeOptions options = new ChromeOptions()
-                    .setBinary("/Applications/yandex.app/Contents/MacOS/Yandex");
+    private void setUpYandex() {
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
+        ChromeDriverService service = new ChromeDriverService.Builder()
+               .withLogOutput(System.out)
+               .usingDriverExecutable(new File(CHROMEDRIVER))
+               .build();
+        ChromeOptions options = new ChromeOptions()
+               .setBinary(YANDEX_BIN);
 
-            driver = new ChromeDriver(service, options);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(DEF_TIMEOUT));
+        driver = new ChromeDriver(service, options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(DEF_TIMEOUT));
         }
 
 

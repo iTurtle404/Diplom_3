@@ -1,17 +1,18 @@
 package praktikum;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import praktikum.pages.ForgotPage;
-import praktikum.pages.LoginPage;
-import praktikum.pages.MainPage;
-import praktikum.pages.RegisterPage;
+import praktikum.pages.*;
 import praktikum.user.User;
 import praktikum.user.UserClient;
 import praktikum.user.UserGenerator;
+
+import static java.lang.Thread.sleep;
 
 public class LoginTest {
     @Rule
@@ -38,20 +39,25 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Log in from Main button on Main Page")
+    @Description("Possible Log in from Main button on Main Page")
     public  void loginFromMainButtonTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter()
                 .checkLoggedSuccess();
     }
     @Test
+    @DisplayName("Log in from Personal Account button")
+    @Description("Possible Log in Personal Account button")
     public  void loginFromPersonalAccountTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage= mainPage.clickOnPersAccButtonForLogin() ;
+        loginPage.clickOnButtonEnter();
         loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter()
@@ -59,10 +65,12 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Log in from form for Registration")
+    @Description("Possible Log in from form for Registration")
     public  void loginInAccountFromRegistrationTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
         RegisterPage registerPage = loginPage.clickOnRegaButton();
         loginPage = registerPage.clickOnEnterButton();
         loginPage.inputEmail(user.getEmail())
@@ -71,11 +79,13 @@ public class LoginTest {
                 .checkLoggedSuccess();
     }
     @Test
+    @DisplayName("Log in from for for recovery password")
+    @Description("Possible Log in from form for Registration")
     public  void loginInAccountFromRecoveryPassTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
-        LoginPage loginPage = mainPage.clickOnUpLoginButton();
-        ForgotPage forgotPage = loginPage.clickOnRecovPass();
+        LoginPage loginPage = mainPage.clickOnLoginButton();
+        ForgotPage forgotPage = loginPage.clickOnRecoveryPass();
         loginPage = forgotPage.clickOnEnterButton();
         loginPage.inputEmail(user.getEmail())
                 .inputPass(user.getPassword())

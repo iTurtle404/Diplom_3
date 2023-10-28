@@ -3,12 +3,13 @@ package praktikum.user;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import praktikum.Client.Client;
+import praktikum.Client;
 
 
 import static praktikum.constants.URLEndPoints.*;
 
 public class UserClient extends Client {
+
     @Step("Created new User from random")
     public ValidatableResponse createUser(User user) {
         return spec()
