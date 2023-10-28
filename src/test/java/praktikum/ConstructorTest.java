@@ -2,7 +2,7 @@ package praktikum;
 
 import org.junit.Rule;
 import org.junit.Test;
-import pages.MainPage;
+import praktikum.pages.MainPage;
 
 
 public class ConstructorTest {

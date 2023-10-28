@@ -1,4 +1,4 @@
-package pages;
+package praktikum.pages;
 
 public class TestData {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";

@@ -5,10 +5,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import pages.*;
-import user.User;
-import user.UserClient;
-import user.UserGenerator;
+import praktikum.pages.ForgotPage;
+import praktikum.pages.LoginPage;
+import praktikum.pages.MainPage;
+import praktikum.pages.RegisterPage;
+import praktikum.user.User;
+import praktikum.user.UserClient;
+import praktikum.user.UserGenerator;
 
 public class LoginTest {
     @Rule

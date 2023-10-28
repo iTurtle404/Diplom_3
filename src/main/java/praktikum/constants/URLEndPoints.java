@@ -1,4 +1,4 @@
-package constants;
+package praktikum.constants;
 
 public class URLEndPoints {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";

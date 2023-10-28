@@ -6,10 +6,14 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.RegisterPage;
-import user.*;
+import praktikum.pages.LoginPage;
+import praktikum.pages.MainPage;
+import praktikum.pages.RegisterPage;
+import praktikum.user.Credentials;
+import praktikum.user.User;
+import praktikum.user.UserClient;
+import praktikum.user.UserGenerator;
+
 
 public class RegistrationTest {
     @Rule

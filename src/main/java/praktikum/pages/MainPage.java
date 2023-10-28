@@ -1,11 +1,11 @@
-package pages;
+package praktikum.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;
-import static pages.TestData.BASE_URL;
+import static praktikum.pages.TestData.BASE_URL;
 
 public class MainPage {
     final WebDriver driver;

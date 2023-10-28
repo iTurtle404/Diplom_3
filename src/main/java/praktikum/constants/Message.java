@@ -1,4 +1,4 @@
-package constants;
+package praktikum.constants;
 
 public class Message {
     public static final String ERROR_LOGGED = "Logged is failed";

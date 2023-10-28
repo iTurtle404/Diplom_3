@@ -1,9 +1,9 @@
-package pages;
+package praktikum.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import static constants.Message.ERROR_LOGGED;
-import static constants.Message.ERROR_REGIST;
+import static praktikum.constants.Message.ERROR_LOGGED;
+import static praktikum.constants.Message.ERROR_REGIST;
 import static org.junit.Assert.assertTrue;
 
 public class LoginPage {

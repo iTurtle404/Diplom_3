@@ -5,12 +5,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.ProfilePage;
-import user.User;
-import user.UserClient;
-import user.UserGenerator;
+import praktikum.pages.LoginPage;
+import praktikum.pages.MainPage;
+import praktikum.pages.ProfilePage;
+import praktikum.user.User;
+import praktikum.user.UserClient;
+import praktikum.user.UserGenerator;
 
 public class SomeActionTest {
     @Rule

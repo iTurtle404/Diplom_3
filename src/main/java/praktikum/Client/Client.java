@@ -1,9 +1,9 @@
-package Client;
+package praktikum.Client;
 
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-import static constants.URLEndPoints.BASE_URL;
+import static praktikum.constants.URLEndPoints.BASE_URL;
 import static io.restassured.RestAssured.given;
 
 public class Client {

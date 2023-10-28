@@ -1,4 +1,4 @@
-package user;
+package praktikum.user;
 
 public class Credentials {
     public String email;

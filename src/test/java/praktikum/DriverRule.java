@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
 import java.time.Duration;
 
-import static pages.TestData.DEF_TIMEOUT;
+import static praktikum.pages.TestData.DEF_TIMEOUT;
 
 public class DriverRule extends ExternalResource {
     WebDriver driver;
@@ -17,9 +17,9 @@ public class DriverRule extends ExternalResource {
     @Override
     protected void before() throws Throwable {
         if ("yandex".equals((System.getProperty("browser"))))
-            setUpYandex();
+            setUpYandex(); //mvn -Dbrowser=yandex test
         else
-            setUpChrome();
+            setUpChrome(); //mvn test
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(DEF_TIMEOUT));
     }
 
