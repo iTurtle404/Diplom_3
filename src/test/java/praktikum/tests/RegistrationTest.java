@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
+import io.qameta.allure.junit4.DisplayName;
 import praktikum.pages.LoginPage;
 import praktikum.pages.MainPage;
 import praktikum.pages.RegisterPage;
