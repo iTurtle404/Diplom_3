@@ -13,8 +13,6 @@ import praktikum.user.User;
 import praktikum.user.UserClient;
 import praktikum.user.UserGenerator;
 
-import static java.lang.Thread.sleep;
-
 public class LoginTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
@@ -31,7 +29,6 @@ public class LoginTest {
         accessToken = createResponse.extract().path("accessToken");
     }
 
-
     @After
     public void tearDown() {
         if (accessToken != null) {
@@ -40,7 +37,7 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Log in from Main button on Main Page")
+    @DisplayName("Login from Main button on Main Page")
     @Description("Possible Log in from Main button on Main Page")
     public  void loginFromMainButtonTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
@@ -52,7 +49,7 @@ public class LoginTest {
                 .checkLoggedSuccess();
     }
     @Test
-    @DisplayName("Log in from Personal Account button")
+    @DisplayName("Login from Personal Account button")
     @Description("Possible Log in Personal Account button")
     public  void loginFromPersonalAccountTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
@@ -66,8 +63,8 @@ public class LoginTest {
     }
 
     @Test
-    @DisplayName("Log in from form for Registration")
-    @Description("Possible Log in from form for Registration")
+    @DisplayName("Login from form for Registration")
+    @Description("Possible Login from form for Registration")
     public  void loginInAccountFromRegistrationTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
@@ -80,7 +77,7 @@ public class LoginTest {
                 .checkLoggedSuccess();
     }
     @Test
-    @DisplayName("Log in from for for recovery password")
+    @DisplayName("Login from form for recovery password")
     @Description("Possible Log in from form for Registration")
     public  void loginInAccountFromRecoveryPassTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());

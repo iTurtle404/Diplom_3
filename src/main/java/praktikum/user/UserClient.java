@@ -1,10 +1,8 @@
 package praktikum.user;
 
 import io.qameta.allure.Step;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import praktikum.Client;
-
 
 import static praktikum.constants.URLEndPoints.*;
 
@@ -37,14 +35,5 @@ public class UserClient extends Client {
                 .delete(USER_PATH)
                 .then().log().all();
     }
-
-    @Step("Get Token")
-    public String getAccessToken(Response response) {
-        String token = response.then()
-                .extract()
-                .path("accessToken");
-        return token.substring(7);
-    }
-
 
 }
