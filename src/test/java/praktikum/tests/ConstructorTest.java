@@ -61,9 +61,12 @@ public class ConstructorTest {
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage()
                 .ScrollDownToSauce();
-        mainPage.ScrollDownToFilling();
-        mainPage.ScrollUpToSauce();
-        mainPage.ScrollUpToBun();
+        mainPage.checkIsGoToSauce()
+                .ScrollDownToFilling();
+        mainPage.checkIsGoToFilling()
+                .ScrollUpToSauce();
+        mainPage.checkIsGoToSauce()
+                .ScrollUpToBun();
         mainPage.checkIsMainPage();
     }
 }

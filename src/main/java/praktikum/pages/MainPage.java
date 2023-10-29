@@ -40,13 +40,15 @@ public class MainPage {
         driver.findElement(buttonLogIn).click();
         return new LoginPage(driver);
     }
-    @Step("Click on Personal Accountbutton")
+    //если пользователь еще не авторизован - клик перекидывает на страницу регистрации
+    @Step("Click on Personal Account button with unauthorized user")
     public LoginPage  clickOnPersAccButtonForLogin() {
         driver.findElement(buttonPersAcc).click();
         return new LoginPage (driver);
     }
-    @Step("Click on Personal Accountbutton")
-    public ProfilePage  clickOnPersAccButton() {
+    //если пользователь уже авторизован - клик перекидывает на страницу профиля
+    @Step("Click on Personal Account button for go to Profile. authorized user")
+    public ProfilePage clickOnPersAccButtonForProfile() {
         driver.findElement(buttonPersAcc).click();
         return new ProfilePage (driver);
     }

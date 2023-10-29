@@ -1,5 +1,6 @@
 package praktikum.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -22,32 +23,38 @@ public class RegisterPage {
 
 
     //methods
+    @Step("Input Name into registration form")
     public RegisterPage inputName(String name){
         driver.findElement(inputName).sendKeys(name);
         return this;
     }
+    @Step("Input Email into registration form")
     public RegisterPage inputEmail(String email){
         driver.findElement(inputEmail).sendKeys(email);
         return this;
     }
+    @Step("Input Password into registration form")
     public RegisterPage inputPass(String pass){
         driver.findElement(inputPass).sendKeys(pass);
         return this;
     }
+    @Step("Check that unsuccessfully registration with existen data")
     public RegisterPage showErrorExistUserMsg(){
         assertTrue( driver.findElements(errorMsgExistUser).size() != 0);
         return this;
 
     }
+    @Step("Click oh button for registration")
     public LoginPage clickOnRegisterButton() {
         driver.findElement(buttonRegister).click();
         return new LoginPage(driver);
     }
-
-    public RegisterPage showErrorLenghtPath() {
+    @Step("Check that unsuccessfully registration with incorrect password")
+    public RegisterPage showErrorLenghtPass() {
         assertTrue( driver.findElements(errorMsgLenghtPass).size() != 0);
         return this;
     }
+    @Step("Click oh button for enter with exist user from Register Page")
     public LoginPage clickOnEnterButton() {
         driver.findElement(buttonAlreadyReg).click();
         return new LoginPage(driver);

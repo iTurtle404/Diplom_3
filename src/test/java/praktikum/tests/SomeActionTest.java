@@ -50,7 +50,7 @@ public class SomeActionTest {
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter();
         mainPage= loginPage.checkLoggedSuccess();
-        ProfilePage profilePage = mainPage.clickOnPersAccButton();
+        ProfilePage profilePage = mainPage.clickOnPersAccButtonForProfile();
         profilePage.checkIntoAccountSuccess();
     }
     @Test
@@ -65,7 +65,7 @@ public class SomeActionTest {
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter();
         mainPage = loginPage.checkLoggedSuccess();
-        ProfilePage profilePage = mainPage.clickOnPersAccButton();
+        ProfilePage profilePage = mainPage.clickOnPersAccButtonForProfile();
         mainPage = profilePage.clickOnConstructor();
         mainPage.checkIsMainPage();
     }
@@ -82,7 +82,7 @@ public class SomeActionTest {
                 .inputPass(user.getPassword())
                 .clickOnButtonEnter();
         mainPage= loginPage.checkLoggedSuccess();
-        ProfilePage profilePage = mainPage.clickOnPersAccButton();
+        ProfilePage profilePage = mainPage.clickOnPersAccButtonForProfile();
         profilePage.checkIntoAccountSuccess();
         loginPage= profilePage.clickOnExit();
         loginPage.checkIsLoginPage();

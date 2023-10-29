@@ -23,7 +23,6 @@ public class LoginTest {
     @Before
     public void setUp() {
         user = UserGenerator.genericUserRandom();
-        client.createUser(user);
 
         ValidatableResponse createResponse = client.createUser(user);
         accessToken = createResponse.extract().path("accessToken");
@@ -65,7 +64,7 @@ public class LoginTest {
     @Test
     @DisplayName("Login from form for Registration")
     @Description("Possible Login from form for Registration")
-    public  void loginInAccountFromRegistrationTest(){
+    public  void loginFromRegistrationTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnLoginButton();
@@ -79,7 +78,7 @@ public class LoginTest {
     @Test
     @DisplayName("Login from form for recovery password")
     @Description("Possible Log in from form for Registration")
-    public  void loginInAccountFromRecoveryPassTest(){
+    public  void loginFromRecoveryPassTest(){
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage();
         LoginPage loginPage = mainPage.clickOnLoginButton();

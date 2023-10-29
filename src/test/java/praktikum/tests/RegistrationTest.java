@@ -20,7 +20,7 @@ import praktikum.user.UserGenerator;
 public class RegistrationTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
-    private UserClient client = new UserClient();;
+    private final UserClient client = new UserClient();;
     private User user;
     public String accessToken;
 
@@ -84,6 +84,6 @@ public class RegistrationTest {
                 .inputEmail(user.getEmail())
                 .inputPass(user.getPassword())
                 .clickOnRegisterButton();
-        registerPage.showErrorLenghtPath();
+        registerPage.showErrorLenghtPass();
     }
 }
