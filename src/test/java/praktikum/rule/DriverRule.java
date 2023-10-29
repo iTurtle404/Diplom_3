@@ -1,4 +1,4 @@
-package praktikum;
+package praktikum.rule;
 
 import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;

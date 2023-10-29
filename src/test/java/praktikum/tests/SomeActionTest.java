@@ -1,4 +1,4 @@
-package praktikum;
+package praktikum.tests;
 
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import praktikum.pages.LoginPage;
 import praktikum.pages.MainPage;
 import praktikum.pages.ProfilePage;
+import praktikum.rule.DriverRule;
 import praktikum.user.User;
 import praktikum.user.UserClient;
 import praktikum.user.UserGenerator;

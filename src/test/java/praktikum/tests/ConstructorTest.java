@@ -1,9 +1,10 @@
-package praktikum;
+package praktikum.tests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Rule;
 import org.junit.Test;
+import praktikum.rule.DriverRule;
 import praktikum.pages.MainPage;
 
 
