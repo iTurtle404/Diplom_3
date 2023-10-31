@@ -1,8 +1,11 @@
 package praktikum.user;
 
 public class Credentials {
-    public String email;
-    public String password;
+    private String email;
+    private String password;
+
+    public Credentials() {
+    }
 
     public Credentials(String email, String password) {
         this.email = email;
@@ -12,5 +15,21 @@ public class Credentials {
     public static Credentials from(User user) {
         return new Credentials(user.getEmail(), user.getPassword());
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getEmail() {
+        return email;
+    }
+
 
 }

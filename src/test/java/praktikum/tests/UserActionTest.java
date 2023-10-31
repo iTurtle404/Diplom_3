@@ -15,7 +15,7 @@ import praktikum.user.User;
 import praktikum.user.UserClient;
 import praktikum.user.UserGenerator;
 
-public class SomeActionTest {
+public class UserActionTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
     private final UserClient client = new UserClient();

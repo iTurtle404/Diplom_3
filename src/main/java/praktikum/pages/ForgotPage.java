@@ -11,12 +11,12 @@ public class ForgotPage {
     }
 
     //locators
-    protected static final By enterByForgot = By.xpath("//a[text()='Войти']");
+    protected static final By ENTER_BY_FORGOT = By.xpath("//a[text()='Войти']");
 
     //methods
     @Step("Click on Enter button")
     public LoginPage clickOnEnterButton() {
-        driver.findElement(enterByForgot).click();
+        driver.findElement(ENTER_BY_FORGOT).click();
         return new LoginPage(driver);
     }
 

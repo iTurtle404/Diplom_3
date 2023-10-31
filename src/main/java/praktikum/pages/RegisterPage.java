@@ -13,50 +13,50 @@ public class RegisterPage {
     }
 
     //locators
-    protected static final By inputName = By.xpath ("//fieldset[1]//input");
-    protected static final By inputEmail = By.xpath ("//fieldset[2]//input");
-    protected static final By inputPass = By.xpath ("//fieldset[3]//input");
-    protected static final By buttonRegister = By.xpath("//button[text()='Зарегистрироваться']");
-    protected static final By errorMsgExistUser = By.xpath(".//*[@class='input__error text_type_main-default']");
-    protected static final By errorMsgLenghtPass = By.xpath(".//p[contains(text(),'Некорректный пароль')]");
-    protected static final By buttonAlreadyReg = By.xpath("//a[text()='Войти']");
+    protected static final By INPUT_NAME = By.xpath ("//fieldset[1]//input");
+    protected static final By INPUT_EMAIL = By.xpath ("//fieldset[2]//input");
+    protected static final By INPUT_PASS = By.xpath ("//fieldset[3]//input");
+    protected static final By BUTTON_REGISTER = By.xpath("//button[text()='Зарегистрироваться']");
+    protected static final By ERROR_MSG_EXIST_USER = By.xpath(".//*[@class='input__error text_type_main-default']");
+    protected static final By ERROR_MSG_LENGHT_PASS = By.xpath(".//p[contains(text(),'Некорректный пароль')]");
+    protected static final By BUTTON_ALREADY_REG = By.xpath("//a[text()='Войти']");
 
 
     //methods
     @Step("Input Name into registration form")
     public RegisterPage inputName(String name){
-        driver.findElement(inputName).sendKeys(name);
+        driver.findElement(INPUT_NAME).sendKeys(name);
         return this;
     }
     @Step("Input Email into registration form")
     public RegisterPage inputEmail(String email){
-        driver.findElement(inputEmail).sendKeys(email);
+        driver.findElement(INPUT_EMAIL).sendKeys(email);
         return this;
     }
     @Step("Input Password into registration form")
     public RegisterPage inputPass(String pass){
-        driver.findElement(inputPass).sendKeys(pass);
+        driver.findElement(INPUT_PASS).sendKeys(pass);
         return this;
     }
     @Step("Check that unsuccessfully registration with existen data")
     public RegisterPage showErrorExistUserMsg(){
-        assertTrue( driver.findElements(errorMsgExistUser).size() != 0);
+        assertTrue( driver.findElements(ERROR_MSG_EXIST_USER).size() != 0);
         return this;
 
     }
     @Step("Click oh button for registration")
     public LoginPage clickOnRegisterButton() {
-        driver.findElement(buttonRegister).click();
+        driver.findElement(BUTTON_REGISTER).click();
         return new LoginPage(driver);
     }
     @Step("Check that unsuccessfully registration with incorrect password")
     public RegisterPage showErrorLenghtPass() {
-        assertTrue( driver.findElements(errorMsgLenghtPass).size() != 0);
+        assertTrue( driver.findElements(ERROR_MSG_LENGHT_PASS).size() != 0);
         return this;
     }
     @Step("Click oh button for enter with exist user from Register Page")
     public LoginPage clickOnEnterButton() {
-        driver.findElement(buttonAlreadyReg).click();
+        driver.findElement(BUTTON_ALREADY_REG).click();
         return new LoginPage(driver);
     }
 }

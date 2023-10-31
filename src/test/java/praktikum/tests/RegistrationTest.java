@@ -20,7 +20,8 @@ import praktikum.user.UserGenerator;
 public class RegistrationTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
-    private final UserClient client = new UserClient();;
+    private final UserClient client = new UserClient();
+    private Credentials creds;
     private User user;
     public String accessToken;
 
@@ -28,12 +29,13 @@ public class RegistrationTest {
     public void setUp(){
         user = UserGenerator.genericUserRandom();
 
-        var creds = Credentials.from(user);
-        ValidatableResponse loginResponse = client.loginUser(creds);
-        accessToken = loginResponse.extract().path("accessToken");
     }
     @After
     public void tearDown() {
+        creds = Credentials.from(user);
+        ValidatableResponse loginResponse = client.loginUser(creds);
+        accessToken = loginResponse.extract().path("accessToken");
+
         if (accessToken != null) {
             client.deleteUser(accessToken);
         }

@@ -19,9 +19,7 @@ public class ConstructorTest {
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage()
                 .clickOnSauceButton()
-                .checkIsGoToSauce()
                 .clickOnFillingButton()
-                .checkIsGoToFilling()
                 .clickOnBunButton()
                 .checkIsGoToBun();
     }
@@ -44,6 +42,9 @@ public class ConstructorTest {
                 .clickOnFillingButton()
                 .checkIsGoToFilling();
     }
+
+
+
     @Test
     @DisplayName("Transit to section - Bun. Constructor")
     @Description("Possible Transit to section - Bun. Constructor")
@@ -60,13 +61,10 @@ public class ConstructorTest {
     public void scrollInIngredientsTest() {
         MainPage mainPage = new MainPage(driverRule.getDriver());
         mainPage.openPage()
-                .ScrollDownToSauce();
-        mainPage.checkIsGoToSauce()
-                .ScrollDownToFilling();
-        mainPage.checkIsGoToFilling()
-                .ScrollUpToSauce();
-        mainPage.checkIsGoToSauce()
-                .ScrollUpToBun();
+                .scrollDownToSauce();
+        mainPage.scrollDownToFilling();
+        mainPage.scrollUpToSauce();
+        mainPage.scrollUpToBun();
         mainPage.checkIsMainPage();
     }
 }

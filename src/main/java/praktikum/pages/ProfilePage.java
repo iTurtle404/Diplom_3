@@ -13,24 +13,24 @@ public class ProfilePage {
     }
 
     //locators
-    protected static final By profileInfo = By.xpath("//a[text()='Профиль']");
-    protected static final By buttonConstructor = By.xpath("//p[text()='Конструктор']");
-    protected static final By buttonExit = By.xpath("//button[text()='Выход']");
+    protected static final By PROFILE_INFO = By.xpath("//a[text()='Профиль']");
+    protected static final By BUTTON_CONSTRUCTOR = By.xpath("//p[text()='Конструктор']");
+    protected static final By BUTTON_EXIT = By.xpath("//button[text()='Выход']");
 
     //methods
     @Step("Check that go to the Personal Account successfully")
     public ProfilePage checkIntoAccountSuccess() {
-        assertTrue(driver.findElements(profileInfo).size() != 0);
+        assertTrue(driver.findElements(PROFILE_INFO).size() != 0);
         return this;
     }
     @Step("Click on Constructor button ")
     public MainPage clickOnConstructor() {
-        driver.findElement(buttonConstructor).click();
+        driver.findElement(BUTTON_CONSTRUCTOR).click();
         return new MainPage(driver);
     }
     @Step("Click on exit button")
     public LoginPage clickOnExit() {
-        driver.findElement(buttonExit).click();
+        driver.findElement(BUTTON_EXIT).click();
         return new LoginPage(driver);
     }
 }
